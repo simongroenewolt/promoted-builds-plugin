@@ -300,7 +300,7 @@ public final class PromotionProcess extends AbstractProject<PromotionProcess,Pro
 				ParameterValue defaultParameterValue = parameterDefinition.getDefaultParameterValue();
 				if (defaultParameterValue!=null){
 					if (defaultParameterValue instanceof StringParameterValue){
-						envVars.put(parameterDefinition.getName(), ((StringParameterValue)defaultParameterValue).value);
+						envVars.put(parameterDefinition.getName(), String.valueOf(((StringParameterValue)defaultParameterValue).getValue()));
 					}
 				}
 			}

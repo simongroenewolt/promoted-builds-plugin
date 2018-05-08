@@ -28,8 +28,11 @@ public class PromotionsDslContextExtensionTest {
         // Given
         String dsl = FileUtils.readFileToString(new File("src/test/resources/example-dsl.groovy"));
         FreeStyleProject seedJob = j.createFreeStyleProject();
-        seedJob.getBuildersList().add(
-                new ExecuteDslScripts(new ExecuteDslScripts.ScriptLocation(Boolean.TRUE.toString(), null, dsl), false, RemovedJobAction.DELETE));
+        ExecuteDslScripts eds = new ExecuteDslScripts();
+        eds.setScriptText(dsl);
+        eds.setIgnoreMissingFiles(false);
+        eds.setRemovedJobAction(RemovedJobAction.DELETE);
+        seedJob.getBuildersList().add(eds);
         // When        
         QueueTaskFuture<FreeStyleBuild> scheduleBuild2 = seedJob.scheduleBuild2(0);
         // Then
@@ -42,8 +45,11 @@ public class PromotionsDslContextExtensionTest {
         // Given
         String dsl = FileUtils.readFileToString(new File("src/test/resources/complex-example-dsl.groovy"));
         FreeStyleProject seedJob = j.createFreeStyleProject();
-        seedJob.getBuildersList().add(
-                new ExecuteDslScripts(new ExecuteDslScripts.ScriptLocation(Boolean.TRUE.toString(), null, dsl), false, RemovedJobAction.DELETE));
+        ExecuteDslScripts eds = new ExecuteDslScripts();
+        eds.setScriptText(dsl);
+        eds.setIgnoreMissingFiles(false);
+        eds.setRemovedJobAction(RemovedJobAction.DELETE);
+        seedJob.getBuildersList().add(eds);
         // When        
         QueueTaskFuture<FreeStyleBuild> scheduleBuild2 = seedJob.scheduleBuild2(0);
         // Then
@@ -55,8 +61,11 @@ public class PromotionsDslContextExtensionTest {
         // Given
         String dsl = FileUtils.readFileToString(new File("src/test/resources/copyartifacts-example-dsl.groovy"));
         FreeStyleProject seedJob = j.createFreeStyleProject();
-        seedJob.getBuildersList().add(
-                new ExecuteDslScripts(new ExecuteDslScripts.ScriptLocation(Boolean.TRUE.toString(), null, dsl), false, RemovedJobAction.DELETE));
+        ExecuteDslScripts eds = new ExecuteDslScripts();
+        eds.setScriptText(dsl);
+        eds.setIgnoreMissingFiles(false);
+        eds.setRemovedJobAction(RemovedJobAction.DELETE);
+        seedJob.getBuildersList().add(eds);
         // When
         QueueTaskFuture<FreeStyleBuild> scheduleBuild2 = seedJob.scheduleBuild2(0);
         // Then (unstable b/c we aren't including the CopyArtifacts dependency)
