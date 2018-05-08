@@ -7,3 +7,5 @@ target
 *.iws
 work
 .idea/
+bin
+plugins-tmp
